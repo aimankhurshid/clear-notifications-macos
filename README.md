@@ -2,34 +2,25 @@
 
 Double-tap `Command` to clear visible macOS notifications.
 
-## Install
+## Installation
 
 1. Install [Hammerspoon](https://www.hammerspoon.org/).
-2. Download this repo or clone it.
+2. Download this repository as a ZIP or clone it.
 3. Open the `dist` folder.
-4. Double-click `ClearNotificationsInstaller.command`.
-5. Enable Hammerspoon in:
+4. Unzip `ClearNotificationsInstaller.zip`.
+5. Double-click `ClearNotificationsInstaller.command`.
+6. Enable Hammerspoon in:
 
 ```text
 System Settings > Privacy & Security > Accessibility
 ```
 
-6. If macOS asks for permission to control `System Events`, click **Allow**.
+7. If macOS asks for permission to control `System Events`, click **Allow**.
 
-## Use
+## Usage
 
-Double-tap `Command` whenever you want to clear visible notification banners or alerts.
+Double-tap `Command` to clear visible notification banners or alerts.
 
-## Share
+## Troubleshooting
 
-Send this file to someone:
-
-```text
-dist/ClearNotificationsInstaller.zip
-```
-
-They only need to unzip it, double-click the installer, and enable Hammerspoon in Accessibility.
-
-## If It Does Not Work
-
-Quit and reopen Hammerspoon, then choose **Reload Config** from the Hammerspoon menu bar icon.
+If the shortcut does not work, quit and reopen Hammerspoon, then choose **Reload Config** from the Hammerspoon menu bar icon.
