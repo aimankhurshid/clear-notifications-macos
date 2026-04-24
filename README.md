@@ -1,72 +1,66 @@
 # Clear Notifications for macOS
 
-Double-tap Command to clear visible macOS Notification Center banners and alerts.
+A small Hammerspoon setup that clears visible macOS notification banners when you double-tap `Command`.
 
-This uses Hammerspoon because macOS requires Accessibility permission for global key listening and Notification Center automation.
+I made this because Notification Center is awkward to automate, and the usual "find the close button" scripts break easily across macOS versions and languages. This one looks for Notification Center alert/banner roles and uses the last available action, which has been more reliable in practice.
 
-## What to Share
+## Install
 
-Send this file to someone:
+1. Install [Hammerspoon](https://www.hammerspoon.org/).
+2. Download and unzip:
 
 ```text
 dist/ClearNotificationsInstaller.zip
 ```
 
-They should unzip it, double-click `ClearNotificationsInstaller.command`, then enable Hammerspoon in:
+3. Double-click `ClearNotificationsInstaller.command`.
+4. Enable Hammerspoon here:
 
 ```text
 System Settings > Privacy & Security > Accessibility
 ```
 
-macOS does not allow this permission to be granted automatically.
+That last step has to be done manually. macOS does not let scripts grant Accessibility permission for you.
 
-## Requirements
+After that, double-tap `Command` whenever you want to clear visible notifications.
 
-```text
-macOS
-Hammerspoon
-Accessibility permission for Hammerspoon
-```
+## Files
 
-## Folder Map
+The shareable build is in `dist/`.
 
 ```text
 dist/
-  Files ready to share.
+  ClearNotificationsInstaller.command
+  ClearNotificationsInstaller.zip
 
 source/
-  Editable installer source.
+  installer-source.command
 
 docs/
-  Notes, screenshots, and setup instructions.
+  setup-for-friends.md
 ```
 
-## Current Files
+If you are sending this to someone, send the zip from `dist/`.
+
+## Updating the Installer
+
+Edit the source file first:
 
 ```text
-dist/ClearNotificationsInstaller.command
-dist/ClearNotificationsInstaller.zip
 source/installer-source.command
 ```
 
-## Update Flow
-
-1. Edit `source/installer-source.command`.
-2. Copy it to `dist/ClearNotificationsInstaller.command`.
-3. Rebuild `dist/ClearNotificationsInstaller.zip`.
-4. Share the zip.
-
-## GitHub Publish
-
-Suggested repository name:
-
-```text
-clear-notifications-macos
-```
-
-After authenticating with GitHub CLI:
+Then copy it into `dist/` and rebuild the zip:
 
 ```bash
-gh auth login -h github.com
-gh repo create clear-notifications-macos --public --source=. --remote=origin --push
+cp source/installer-source.command dist/ClearNotificationsInstaller.command
+chmod +x dist/ClearNotificationsInstaller.command
+cd dist
+zip -q ClearNotificationsInstaller.zip ClearNotificationsInstaller.command
 ```
+
+## Notes
+
+The installer backs up an existing Hammerspoon config before touching it. It installs the notification clearer as a separate module and adds a small `require("clear_notifications")` block to `~/.hammerspoon/init.lua`.
+
+If the shortcut does not work after installing, quit and reopen Hammerspoon, then choose **Reload Config** from the Hammerspoon menu bar icon.
