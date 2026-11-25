@@ -15,8 +15,6 @@ Double-tap `Command` to clear visible macOS notifications.
 System Settings > Privacy & Security > Accessibility
 ```
 
-7. If macOS asks for permission to control `System Events`, click **Allow**.
-
 ## Usage
 
 Double-tap `Command` to clear visible notification banners or alerts.
